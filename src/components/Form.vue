@@ -47,9 +47,6 @@
                 <b-button type="submit" variant="primary">Consultar</b-button>
 
         </b-form>
-        <b-card class="mt-3" header="Form Data Result">
-            <pre class="m-0">{{ form }}</pre>
-        </b-card>
     </div>
 </template>
 
@@ -71,14 +68,11 @@
         methods: {
             onSubmit(evt) {
                 evt.preventDefault();
-               // alert(JSON.stringify(this.form))
                 let candidato =  JSON.stringify(this.form);
-                if (this.isMobile) {
+                if (this.$isMobile()) {
                     localStorage.setItem('candidatoLocal',candidato);
-                    console.log("es celular");
                 } else {
                     this.$cookie.set('candidatoLocalPC', candidato, 1);
-                    console.log("es pc");
                    // let candidato = JSON.parse(this.$cookie.get("test"));
                     // console.log(candidato);
                 }
