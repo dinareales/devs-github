@@ -1,6 +1,7 @@
 <template>
-    <div>
+    <div class="container">
         <b-form @submit="onSubmit" v-if="show">
+            <b-card class="mt-3" header="Información del candidato">
                 <b-form-group id="input-group-1" label="Nombre y apellido: " label-for="input-1">
                     <b-form-input
                             id="input-1"
@@ -45,14 +46,21 @@
                 </b-form-group>
 
                 <b-button type="submit" variant="primary">Consultar</b-button>
-
+            </b-card>
         </b-form>
+        <div   v-if="!show">
+            <UserDetails></UserDetails>
+        </div>
     </div>
 </template>
 
 <script>
+    import UserDetails from '@/components/UserDetails.vue'
     export default {
         name: 'FormUser',
+        components: {
+            UserDetails
+        },
         data() {
             return {
                 form: {
@@ -73,10 +81,16 @@
                     localStorage.setItem('candidatoLocal',candidato);
                 } else {
                     this.$cookie.set('candidatoLocalPC', candidato, 1);
-                   // let candidato = JSON.parse(this.$cookie.get("test"));
-                    // console.log(candidato);
                 }
+                this.show = false;
+                //this.$router.push('User');
+               // this.$router.go(0);
             },
         }
     }
 </script>
+<style scoped>
+    .container{
+        max-width: 700px;
+    }
+</style>
