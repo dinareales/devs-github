@@ -5,6 +5,9 @@ import store from './store'
 import VueMobileDetection from 'vue-mobile-detection'
 Vue.use(VueMobileDetection);
 
+import { VuejsDatatableFactory } from 'vuejs-datatable';
+Vue.use( VuejsDatatableFactory );
+
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 Vue.use(BootstrapVue);
 
