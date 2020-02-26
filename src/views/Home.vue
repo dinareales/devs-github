@@ -1,47 +1,37 @@
 <template>
-  <div class="home">
-    <b-container>
-      <b-row>
-        <b-col>
-          <div class="card-img-left">
-            <img alt="Vue logo" src="../assets/logo.png">
-            <p>Evaluador de candidatos con github</p>
-          </div>
-        </b-col>
-        <b-col>
-          <b-card class="mt-3" header="Información del candidato">
-            <FormUser></FormUser>
-          </b-card>
-        </b-col>
-      </b-row>
-    </b-container>
+  <div>
+    <div class="home">
+      <Home></Home>
+    </div>
   </div>
+
 </template>
 
 <script>
 // @ is an alias to /src
-import FormUser from '@/components/Form.vue'
+import Home from '@/components/Home.vue'
+
 
 export default {
   name: 'Form',
   components: {
-    FormUser
+    Home
+  },
+  methods: {
+    userExist: function () {
+      let candidato = "";
+      if (this.$isMobile()) {
+        candidato = JSON.parse(localStorage.getItem('candidatoLocal'));
+      } else {
+        candidato = JSON.parse(this.$cookie.get("test"))
+      }
+      console.log("data", candidato);
+      if (candidato === null) {
+        return false;
+      }
+      return true;
+
+    }
   }
 }
 </script>
-<style scoped>
-
-  .card-img-left{
-    text-align: center;
-    padding: 0 auto;
-    margin: 30%;
-  }
-  img{
-    max-width: 250px;
-  }
-  p{
-    padding-top: 5%;
-    font-weight: bold;
-
-  }
-</style>

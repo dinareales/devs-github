@@ -48,7 +48,7 @@
                 <b-button type="submit" variant="primary">Consultar</b-button>
             </b-card>
         </b-form>
-        <div   v-if="!show">
+        <div  v-if="!show">
             <UserDetails></UserDetails>
         </div>
     </div>
@@ -57,7 +57,7 @@
 <script>
     import UserDetails from '@/components/UserDetails.vue'
     export default {
-        name: 'FormUser',
+        name: 'Home',
         components: {
             UserDetails
         },
