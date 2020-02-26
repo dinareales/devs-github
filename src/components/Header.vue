@@ -42,7 +42,7 @@
             console.log("data", this.candidato["usuario"]);
         },
         mounted() {
-            axios.get("https://api.github.com/users/dinareales")
+            axios.get("https://api.github.com/users/"+this.candidato["usuario"])
                 .then(response => this.info = response.data)
                 .catch(err => {
                     console.log("Fallo")
