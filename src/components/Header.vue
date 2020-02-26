@@ -2,10 +2,10 @@
     <div>
         <b-container class="bv-example-row ">
             <b-row class="test-list">
-                <b-col cols="4" class="bg-secondary text-white">Imagen de perfil GITHUB</b-col>
+                <b-col cols="4" class="bg-secondary text-white">Imagen de perfil GITHUB <img :src=info.avatar_url></b-col>
                 <b-col cols="8" class="bg-success text-white">
-                    <p>{{ candidato["name"]}} (Git:{{info}}) </p>
-                    <p>Bio: </p>
+                    <p>{{ candidato["name"]}} (Git:{{info.login}}) </p>
+                    <p>Bio: {{info.bio}}</p>
                 </b-col>
             </b-row>
             <b-row>
@@ -43,7 +43,7 @@
         },
         mounted() {
             axios.get("https://api.github.com/users/dinareales")
-                .then(response => this.info = response.data.login )
+                .then(response => this.info = response.data)
                 .catch(err => {
                     console.log("Fallo")
                     // Manage the state of the application if the request
