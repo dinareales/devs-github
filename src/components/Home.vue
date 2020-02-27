@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <b-form @submit="onSubmit" v-if="show">
             <b-card class="mt-3" header="Información del candidato">
                 <b-form-group id="input-group-1" label="Nombre y apellido: " label-for="input-1">
@@ -49,6 +49,7 @@
             </b-card>
         </b-form>
         <div  v-if="!show">
+            <b-button v-on:click="exit" variant="danger">SALIR</b-button>
             <UserDetails></UserDetails>
         </div>
     </div>
@@ -83,10 +84,27 @@
                     this.$cookie.set('candidatoLocalPC', candidato, 1);
                 }
                 this.show = false;
-                //this.$router.push('User');
-               // this.$router.go(0);
             },
-        }
+            exit: function () {
+                if (this.$isMobile()) {
+                    localStorage.removeItem('candidatoLocal');
+                } else {
+                    this.$cookie.delete("candidatoLocalPC");
+                }
+                this.show = true;
+            }
+        },
+        created: function () {
+                if (this.$isMobile()) {
+                    this.candidato = JSON.parse(localStorage.getItem('candidatoLocal'));
+                } else {
+                    this.candidato = JSON.parse(this.$cookie.get("candidatoLocalPC"))
+                }
+
+                if(this.candidato !== null){ // esta logueado
+                    this.show = false;
+                }
+        },
     }
 </script>
 <style scoped>
