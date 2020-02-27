@@ -7,6 +7,8 @@
                     bordered
                     arrows
                     :display="3"
+                    responsive
+                    :tfoot="false"
             />
         </mdb-container>
     </div>
