@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <b-form @submit="onSubmit" v-if="show">
+    <div>
+        <b-form @submit="onSubmit" v-if="show" class="container">
             <b-card class="mt-3" header="Información del candidato">
                 <b-form-group id="input-group-1" label="Nombre y apellido: " label-for="input-1">
                     <b-form-input

@@ -9,6 +9,7 @@
                     :display="3"
                     responsive
                     :tfoot="false"
+                    :pagination="pagination"
             />
         </mdb-container>
     </div>
@@ -26,7 +27,8 @@
         data() {
             return {
                 columns: [],
-                rows: []
+                rows: [],
+                pagination: false
             }
         },
         computed: {
@@ -50,13 +52,18 @@
                 .then(response => {
                     //lenguaje, branch por defecto, url git, nombre y descripción.
                     let keys = ["lenguaje", "branch","url","nombre","descripción"];
-                    let dina = [];
+                    let repo = [];
                     response.map( function(value, key) {
-                        dina.push( { lenguaje : value.language , branch : value.default_branch, url : value.url, nombre: value.name, descripción: value.description });
+                        repo.push( { lenguaje : value.language , branch : value.default_branch, url : value.url, nombre: value.name, descripción: value.description });
                     });
 
-                    let entries = this.filterData(dina, keys);
-                    //columns
+                    let entries = this.filterData(repo, keys);
+
+                    if (repo.length>=5) this.pagination = true; //app web
+                    if (this.$isMobile()) { //mobile
+                        this.pagination = false;
+                    }
+                                        //columns
                     this.columns = keys.map(key => {
                         return {
                             label: key.toUpperCase(),
