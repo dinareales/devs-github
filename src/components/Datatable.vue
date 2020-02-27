@@ -10,6 +10,9 @@
                     responsive
                     :tfoot="false"
                     :pagination="pagination"
+                    scrollY
+                    maxHeight=2hv
+                    maxWidth=auto
             />
         </mdb-container>
     </div>
