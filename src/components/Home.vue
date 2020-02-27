@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <b-form @submit="onSubmit" v-if="show">
             <b-card class="mt-3" header="Información del candidato">
                 <b-form-group id="input-group-1" label="Nombre y apellido: " label-for="input-1">

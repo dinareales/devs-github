@@ -2,7 +2,7 @@
     <div>
         <b-container class="bv-example-row ">
             <b-row class="test-list">
-                <b-col cols="4" class="bg-secondary text-white">Imagen de perfil GITHUB <img :src=info.avatar_url></b-col>
+                <b-col cols="4" class="bg-secondary text-white"><img width="100px" :src=info.avatar_url></b-col>
                 <b-col cols="8" class="bg-success text-white">
                     <p>{{ candidato["name"]}} (Git:{{info.login}}) </p>
                     <p>Bio: {{info.bio}}</p>
@@ -39,7 +39,7 @@
             } else {
                 this.candidato = JSON.parse(this.$cookie.get("candidatoLocalPC"))
             }
-            console.log("data", this.candidato["usuario"]);
+            //console.log("data", this.candidato["usuario"]);
         },
         mounted() {
             axios.get("https://api.github.com/users/"+this.candidato["usuario"])
