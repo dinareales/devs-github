@@ -1,24 +1,24 @@
 <template>
     <div>
-        <b-container class="bv-example-row ">
-            <b-row class="test-list">
-                <b-col cols="4" class="bg-secondary text-white"><img width="100px" :src=info.avatar_url></b-col>
-                <b-col cols="8" class="bg-success text-white">
+        <b-container class="container-bg">
+            <div class="test-list row">
+                <div sm="auto" cols="3" align="center" class="col-sm-2"><img class="img-center" :src=info.avatar_url></div>
+                <div cols="9" class="col-sm-10">
                     <p>{{ candidato["name"]}} (Git:{{info.login}}) </p>
-                    <p>Bio: {{info.bio}}</p>
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col class= "bg-primary text-white">
-                    <p>Cedula: {{ candidato["cedula"]}}</p>
-                </b-col>
-                <b-col class= "bg-primary text-white">
-                <p>Fecha de Nacimiento: {{ candidato["fechaNacido"]}}</p>
-            </b-col>
-                <b-col class= "bg-primary text-white">
-                    <p>Email: {{ candidato["email"]}}</p>
-                </b-col>
-            </b-row>
+                    <p><span>Bio: </span> {{info.bio}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p><span>Cedula: </span>{{ candidato["cedula"]}}</p>
+                </div>
+                <div class="col-sm">
+                    <p><span>Fecha de Nacimiento: </span>{{ candidato["fechaNacido"]}}</p>
+                </div>
+                <div class="col-sm">
+                    <p><span>Email: </span>{{ candidato["email"]}}</p>
+                </div>
+            </div>
         </b-container>
     </div>
 </template>
@@ -52,3 +52,22 @@
         }
     }
 </script>
+<style scoped>
+    .img-center{
+        max-height: 100px;
+        border-radius: 50%;
+        margin-top: 10px;
+        text-align: center;
+    }
+    .container-bg{
+        background: #e9ecef;
+    }
+    span{
+        color: #dc3545;
+    }
+    p{
+        padding: 10px;
+        margin: auto;
+    }
+
+</style>

@@ -48,9 +48,9 @@
                 <b-button type="submit" class="btn-block z-depth-1a" variant="primary">Consultar</b-button>
             </b-card>
         </b-form>
-        <div  v-if="!show">
-            <b-button v-on:click="exit" variant="danger">SALIR</b-button>
-            <UserDetails></UserDetails>
+        <div v-if="!show">
+                <b-button v-on:click="exit" variant="danger">SALIR</b-button>
+                <UserDetails></UserDetails>
         </div>
     </div>
 </template>
@@ -115,5 +115,8 @@
     }
     .form{
         text-align: left;
+    }
+    .mt-3{
+        text-align: center;
     }
 </style>
